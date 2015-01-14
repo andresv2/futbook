@@ -2,7 +2,7 @@ source "http://rubygems.org/"
 
 gem "sinatra"
 
-gem 'omniauth-facebook'
+gem 'facebook_oauth'
 
 group :development do
   gem "sinatra-contrib" # sinatra/reloader
