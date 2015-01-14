@@ -9,7 +9,7 @@ module Futbook
     end
 
     get "/" do
-      "Hello World"
+      render :erb, :index
     end
   end
 end
