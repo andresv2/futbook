@@ -1,3 +1,15 @@
 <a href="<%= @player["link"] %>"><h1><%= @player["name"] %></h1></a>
 
-<p><%= @player["gender"] %></p>
+<p><%= @player["gender"] ["age"] %></p>
+<% @player.values.each do |item| %>
+<ul>
+  <li><%= item %></li>
+</ul>
+<%end%>
+
+<label>Comments
+<form action = "/players/:id" method=POST>
+     <textarea name="review" cols="120" rows="30"></textarea>
+
+  </form>
+</label>
