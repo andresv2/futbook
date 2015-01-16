@@ -1,9 +1,13 @@
 <div class="feed box">
-  <div class="">
-    <span class="author-text"><%= @entry["author"] %></span>
-    <span class="date-text"><%= @entry["date_taken"] %></span>
+  <div class="player">
+    <span class="name"><%= @player["name"] %></span>
     <hr class="before"/>
+    <span class="date-text"><%= @entry["date_taken"] %></span>
     <img alt="Entry Image" src="<%= @entry["photo_url"] %>" />
     <hr class="after"/>
   </div>
 </div>
+
+
+
+

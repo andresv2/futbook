@@ -1,6 +1,6 @@
 require_relative 'database_helper'
 module Futbook
-  class Server < Sinatra::Base
+ class Server < Sinatra::Base
 
     enable :logging, :sessions
     helpers Futbook::DataBaseHelper
@@ -17,7 +17,7 @@ module Futbook
         :application_id     => ENV["FACEBOOK_OAUTH_ID"],
         :application_secret => ENV["FACEBOOK_OAUTH_SECRET"],
         :callback           => 'http://localhost:9292/facebook/callback'
-      )
+        )
 
 
       @facebook_oauth_link = client.authorize_url
@@ -30,7 +30,7 @@ module Futbook
         :application_id     => ENV["FACEBOOK_OAUTH_ID"],
         :application_secret => ENV["FACEBOOK_OAUTH_SECRET"],
         :callback           => 'http://localhost:9292/facebook/callback'
-      )
+        )
 
       # use the code FB sent us to get an access token for the user
       access_token = client.authorize(:code => params["code"])
@@ -57,34 +57,42 @@ module Futbook
       redirect to("/players/#{id}")
     end
 
-    get "/players/:id" do
-      @id = params[:id]
+    get '/players/:id' do
+      id = params[:id]
 
       # get the player profile from the db, with the given id
-      @player = $redis.hgetall "player:#{@id}"
+      @player = $redis.hgetall "player:#{id}"
        # binding.pry
-      render :erb, :profile
-    end
+       render :erb, :profile
+     end
 
 
      get('/logout') do
       session[:user_id] = nil
       session[:access_token] = nil # dual assignment!
-      redirect to("/")
+      redirect to('/')
       #binding.pry
 
-      end
+    end
 
-      post('/players/?:id?') do
-     create_member(
+    post('/players') do
+      pic = "" || params["picture"]
+      @id = create_member(
         params["name"],
         params["last_name"],
-        params["email"]
+        params["email"],
+        pic
+
       )
+
 
       redirect to("/players/#{@id}")
     end
 
   end
 end
+
+
+
+
 

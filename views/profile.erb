@@ -1,6 +1,6 @@
 <a href="<%= @player["link"] %>"><h1><%= @player["name"] %></h1></a>
 
-<p><%= @player["gender"] ["age"] %></p>
+<p><%= @player["last_name"] %></p>
 <% @player.values.each do |item| %>
 <ul>
   <li><%= item %></li>
@@ -8,8 +8,26 @@
 <%end%>
 
 <label>Comments
-<form action = "/players/:id" method=POST>
+<form action = "/players" method=POST>
      <textarea name="review" cols="120" rows="30"></textarea>
+     <input type="submit"/>
 
-  </form>
+<label> Add picture
+    <input type="url" name="picture" size="50">
+  </label>
+
+
+ <label> Add video
+    <input type="url" name="video" size="50">
+  </label>
+
+
+
+
+
+</form>
+
 </label>
+
+<h1> Home </h1>
+
