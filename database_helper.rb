@@ -1,22 +1,19 @@
-require 'redis'
 module Futbook
-module DataBaseHelper
-  $redis = Redis.new
+  module DataBaseHelper
+
+    $redis = Redis.new
 
     def create_member(name, last_name, email, picture="")
-      @id = $redis.incr("entry_id")
-
+      @id = $redis.incr("player_id")
       $redis.hmset(
-        "entry:#{@id}",
-
-        "name",     name,
-        "last_name", last_name,
-        "email",  email,
+        "player:#{@id}",
+        "video",     video,
+        "picture", picture,
+        # "email",  email,
         "picture", picture
       )
       @id
     end
 
-
-end
-end
+  end # DataBasHelper
+end # Futbook
