@@ -30,4 +30,11 @@ div.futbook{
 div.welcome {
 color:red;
 }
-
+#footer {
+  background-color: #323232;
+  color:#DBDBDB;
+  height:100px;
+  margin-bottom: -20px;
+  position:fixed;
+  bottom: 20px;
+}

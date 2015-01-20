@@ -4,13 +4,13 @@ module Futbook
     $redis = Redis.new
 
     def create_member(name, last_name, email, picture="")
-      @id = $redis.incr("player_id")
+      @id = $redis.incr("entry_id")
       $redis.hmset(
-        "player:#{@id}",
+        "entry:#{@id}",
         "video",     video,
         "picture", picture,
         # "email",  email,
-        "picture", picture
+        # "picture", picture
       )
       @id
     end

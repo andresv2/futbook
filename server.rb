@@ -131,5 +131,3 @@ module Futbook
 
   end # Server
 end # Futbook
-
-
